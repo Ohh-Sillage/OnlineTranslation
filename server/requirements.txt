@@ -1,0 +1,10 @@
+# 本地服务核心依赖
+fastapi>=0.110
+uvicorn[standard]>=0.29
+faster-whisper>=1.0
+numpy>=1.26
+requests>=2.31
+
+# 可选：本地离线翻译（NLLB-200），默认使用 google_free 策略，不需要以下依赖
+# transformers>=4.40
+# torch>=2.2

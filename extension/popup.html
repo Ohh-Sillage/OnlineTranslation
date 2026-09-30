@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>字幕设置</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <h1>实时字幕翻译</h1>
+    <span id="server-status" class="badge">检测中…</span>
+  </div>
+
+  <div class="section">
+    <div class="label">源语言</div>
+    <div class="lang-group">
+      <label><input type="radio" name="lang" value="ja" checked> 日语</label>
+      <label><input type="radio" name="lang" value="en"> 英语</label>
+      <label><input type="radio" name="lang" value="auto"> 自动</label>
+    </div>
+  </div>
+  <button id="toggle-btn" class="btn primary">开始翻译</button>
+  <div class="shortcut">快捷键 <b>Ctrl+Shift+Y</b>：视频全屏中也能开/停翻译</div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="label">字幕内容</div>
+    <div class="seg" id="mode-seg">
+      <button type="button" data-mode="dual" class="active">双语</button>
+      <button type="button" data-mode="trans">仅译文</button>
+      <button type="button" data-mode="orig">仅原文</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">译文字号 <span class="val" id="font-size-val">20</span>px</div>
+    <input type="range" id="font-size" min="12" max="48" step="1">
+  </div>
+
+  <div class="section">
+    <div class="row">
+      <label class="check"><input type="checkbox" id="show-orig" checked>显示原文（小字）</label>
+    </div>
+    <div class="label">原文字号 <span class="val" id="orig-font-size-val">14</span>px</div>
+    <input type="range" id="orig-font-size" min="10" max="30" step="1">
+  </div>
+
+  <div class="section">
+    <div class="label">文字颜色</div>
+    <div class="swatches" id="color-swatches">
+      <button type="button" data-color="#ffffff" title="白色" style="background:#ffffff"></button>
+      <button type="button" data-color="#ffe082" title="浅黄" style="background:#ffe082"></button>
+      <button type="button" data-color="#a5d6a7" title="浅绿" style="background:#a5d6a7"></button>
+      <button type="button" data-color="#ffccbc" title="浅橙" style="background:#ffccbc"></button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">字幕背景 <span class="val" id="bg-opacity-val">65</span>% 黑</div>
+    <input type="range" id="bg-opacity" min="0" max="100" step="5">
+    <div class="row">
+      <label class="check"><input type="checkbox" id="stroke" checked>文字描边（关背景时更清晰）</label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="row between">
+      <label class="check"><input type="checkbox" id="locked">锁定位置（防误拖）</label>
+      <button type="button" id="reset-pos" class="mini-btn" title="字幕回到底部中央">复位位置</button>
+    </div>
+  </div>
+
+  <div id="subtitle-preview" class="preview">
+    <div class="pv-trans">这是实时字幕翻译的测试。</div>
+    <div class="pv-orig">これはリアルタイム字幕翻訳のテストです。</div>
+  </div>
+  <div id="ws-status" class="hint"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
